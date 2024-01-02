@@ -1,0 +1,50 @@
+image:
+  repository: axoniq/axonserver
+  tag: latest
+  pullPolicy: IfNotPresent
+
+# Axon Server specific settings
+axonserver:
+  # The HTTP port to use inside the container, defaults to 8024
+  httpPort: 8024
+  # The client gRPC port to use inside the container, defaults to 8124
+  grpcPort: 8124
+
+healthcheck:
+  enabled: false
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  name: "axonserver"
+
+volumes:
+  eventStore:
+    size: 1Gi
+    # Configure here how your provider lets you map disks to Kubernetes volumes
+    persistentVolumeSettings: 
+      hostPath:
+        path: /data
+  data:
+    size: 1Gi
+    # Configure here how your provider lets you map disks to Kubernetes volumes
+    persistentVolumeSettings: 
+      hostPath:
+        path: /data
+
+services:
+  httpService:
+    enabled: true
+    type: ClusterIP
+    port: 8024
+  grpcService:
+    enabled: true
+    type: Headless
+    port: 8124
+
+ingress:
+  enabled: true
+  hosts:
+    - host: myaxon.io
+      paths: [ "/" ]
+
