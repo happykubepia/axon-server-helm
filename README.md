@@ -32,6 +32,7 @@ ex) helm install axon -f axon.yaml .
 ```
 http://myaxon.io
 ``` 
+![axon server](./axonserver.png)
 
 >**k8s node를 직접 접근 못하는 경우**   
 PC에 minikube를 docker로 설치한 경우 또는
