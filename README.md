@@ -33,8 +33,9 @@ ex) helm install axon -f axon.yaml .
 http://myaxon.io
 ``` 
 
->**k8s node를 직접 접근 못하는 경우** 
-PC에 minikube를 docker로 설치한 경우 또는 k8s node를 private IP로 설치한 경우는  
+>**k8s node를 직접 접근 못하는 경우**   
+PC에 minikube를 docker로 설치한 경우 또는
+k8s node를 private IP로 설치한 경우는  
 Service object를 Port forward한 후 접근함. 
 - Service Port forward
 ```
